@@ -1,0 +1,18 @@
+workflows:
+  android-workflow:
+    name: Build Android APK
+    environment:
+      vars:
+        PACKAGE_NAME: "com.example.thetube"
+      android_signing:
+        - keystore_reference
+      flutter: false
+      node: 18.16.0
+    scripts:
+      - npm install
+      - npx cap sync android
+      - npx cap copy android
+      - cd android
+      - ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/**/*.apk
