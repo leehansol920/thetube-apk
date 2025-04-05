@@ -4,8 +4,6 @@ workflows:
     environment:
       vars:
         PACKAGE_NAME: "com.example.thetube"
-        android_signing:
-          - keystore_reference
       node: 18.16.0
     scripts:
       - npm install
